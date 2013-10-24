@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jqFloat.js Demonstration</title>
+<meta name="description" content="jqFloat.js is a jQuery plugin that able to make any HTML objects appear to be floating on your webpage."/>
+<meta name="keywords" content="jqfloat.js, jquery, plugin, floating, animation, cloud"/>
+<link rel="shortcut icon" href="http://www.inwebson.com/wp-content/themes/inwebson2/favicon.ico" />
+<link rel="stylesheet" href="style.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="jqfloat.min.js"></script>
+<script>
+$(document).ready(function() {
+	
+	//vendor script
+	$('header')
+	.css({ 'top':-70 })
+	.delay(500)
+	.animate({'top': 0}, 800);
+	
+	$('footer')
+	.css({ 'bottom':-40 })
+	.delay(500)
+	.animate({'bottom': 0}, 800);
+	
+	//jqfloat.js script
+	$('.cloud').each(function() {
+		$(this).jqFloat({
+			width:Math.floor(Math.random()*10)*10,
+			height:10,
+			speed:Math.floor(Math.random()*10)*100 + 500
+		});
+	});	
+	$('#sun').jqFloat({
+		width:10,
+		height:50,
+		speed:1800
+	});
+	$('.butterfly').jqFloat({
+		width:400,
+		height:100,
+		speed:1500
+	});
+	$('#snail, #message').jqFloat('stop',{
+		width:5,
+		height:0,
+		speed:30
+	});
+	$('#snail, #message').hover(function() {
+		$(this).jqFloat('play');
+	}, function() {
+		$(this).jqFloat('stop');
+	});
+	
+	var clicked = false;
+	//define balloon attribute
+	$('#balloon').jqFloat('stop',{
+		width:5,
+		height:30,
+		speed:1500,
+		minHeight:300
+	});
+	$('#balloon').on('click', function() {
+		clicked = !clicked;
+		if(clicked)
+			$(this).jqFloat('play');
+		else 
+			$(this).jqFloat('stop');
+	});
+	$('#social').jqFloat({
+		width: 10,
+		height: 10,
+		speed: 1500
+	});
+});
+</script>
+</head>
+<body>
+<!-- Header -->
+<header>
+	<h1>jqFloat | A Floating Effect with jQuery</h1>
+	<div id="backlinks">
+		<a href="http://www.inwebson.com/jquery/jqfloat-js-a-floating-effect-with-jquery/">BACK TO ARTICLE &raquo;</a>
+		<a href="http://www.inwebson.com">Visit inWebson.com &raquo;</a>
+	</div>
+	<div class="clearfix"></div>
+</header>
+
+<!-- Content -->
+<section id="wrapper">
+	<div id="sky">
+		<div id="cloud1" class="cloud"></div>
+		<div id="cloud2" class="cloud"></div>
+		<div id="cloud3" class="cloud"></div>
+		<div id="cloud4" class="cloud"></div>
+		<div id="sun"></div>
+	</div>
+	<div id="ground">
+		<div id="snail"></div>
+		<div id="message">Don't touch me!!!</div>
+		<div id="fly1" class="butterfly"></div>
+		<div id="fly2" class="butterfly"></div>
+	</div>
+	<div id="balloon"></div>
+	<div id="iefix"></div>
+	<div id="holder">
+		<h2><span>jq</span>Float.js</h2>
+		<p>A jQuery plugin that able to make any HTML objects appear to be <strong><em>floating</em></strong> on your web page. </p>
+		<p>
+		<pre>
+$(document).ready(function() {
+	$('object').jqFloat({
+		width: 100,
+		height: 100,
+		speed: 1000
+	});
+});
+		</pre>
+		</p>
+	</div>
+</section>
+
+<!-- Footer -->
+<footer>
+	<span>&copy; 2012 <a href="http://www.inwebson.com">inWebson.com</a>. Design by <a href="http://www.inwebson.com/contactus">Kenny Ooi</a>. Powered by <a href="http://www.inwebson.com/jquery/">jQuery</a>.</span>
+</footer>
+
+</body>
+</html>
